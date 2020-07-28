@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App2.MainPage"
+             BackgroundColor="WhiteSmoke">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry" x:Key="miestilo">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="Margin" Value="6,0,0,0"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ScrollView>
+        <StackLayout VerticalOptions="Center" Padding="24,0" Spacing="16">
+            <!-- Place new controls here -->
+            <Label Text="Login" FontSize="50" BackgroundColor="Red" Margin="0,24"/>
+            <!--Dibuja un Cuadrado a un Entry-->
+            <Grid>
+                <BoxView Color="Red"/>
+                <BoxView Color="White" Margin="1"/>
+                <Entry Placeholder="Empresa" BackgroundColor="Transparent"/>   
+            </Grid>
+
+            <Grid>
+                <Rectangle x:Name="Rectangle_Usuario" Stroke="Gray"  StrokeThickness="1" Fill="White"/>
+                <Entry Placeholder="Usuario" Keyboard="Email" Focused="Entry_Focused" Unfocused="Entry_Unfocused"/>
+            </Grid>
+            
+            
+            <!--Nueva Forma de hacer un Rectangulo Experimentals-->
+            <Grid>
+                <Rectangle Stroke="Gray"  StrokeThickness="1" Fill="White">
+                    <Rectangle.Triggers>
+                        <DataTrigger TargetType="Rectangle" Binding="{Binding Source={x:Reference Entry_Password},Path=IsFocused}" Value="True">
+                            <Setter Property="Stroke" Value="Black"></Setter>
+                        </DataTrigger>
+                    </Rectangle.Triggers>
+                </Rectangle> 
+                <Entry x:Name="Entry_Password" Placeholder="Contraseña" IsPassword ="True" Keyboard="Numeric" />
+            </Grid>
+            
+            <Label Text ="¿Has olivado tu contraseña?" HorizontalOptions="End" Padding="0,12,12,12" 
+                   />
+            <Button Text="Entrar" CornerRadius="32" HeightRequest="64" BackgroundColor="#8005186b" TextColor="White" BorderColor="DarkBlue" BorderWidth="1.5" />
+            <Label Text="Declaración de Privacidad" TextDecorations="Underline" TextColor="BlueViolet" Padding="0,12"/>
+            <Picker  />
+        </StackLayout>
+    </ScrollView>
+    
+</ContentPage>
